@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Pathein Seed Testing Laboratory (Department Of Agriculture)</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	
+	
+
+	
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
+    <!-- ICONS -->
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+</head>
+
+<body class="my">
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			
+			<div class="container-fluid">
+				
+				<div class="brand">
+						<a ><img src="assets/img/logo.png" alt="qaat" class="img-responsive logo"></a>			</div>
+				<div class="mob-logo hidden-lg hidden-md ">
+				<a ><img src="assets/img/logo-dark.png" alt="" class="img-responsive logo"></a>				</div>
+				<h2 class="head"> Pathein Seed Testing Laboratory (Department Of Agriculture) </h2>
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+							<li class="dropdown">
+								</li>
+								<li><a (click)="logout()" ><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+							</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav" *ngIf="roleId3==='1' || roleId3==='3'">
+						<li><a (click)="getDashboard()" class="active  metric dash-main"> <span >Dashboard</span></a></li>
+						
+						<li><a (click)="getGenerateReport()" class="metric dash-main"> <span>Generate Report</span></a></li>
+					</ul>
+					<ul class="nav" *ngIf="roleId3==='2'">
+						
+						<li ><a  (click)="getSampleRegistration()"  class=" metric dash-main"> <span>Sample Registration From</span></a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+
+			<div class="main-content">
+					
+					<form  #f="ngForm" (ngSubmit)="f.form.valid && addredriceform(f)" novalidate>
+				<div class="container-fluid">
+					<!-- OVERVIEW -->
+					<div class="panel panel-headline">
+						<div class="panel-body">
+						    <div class="row">
+                                <div class="col-md-12">
+									<!-- PANEL HEADLINE -->
+									<div class="panel panel-headline">
+										<div class="panel-body">
+											<div class="col-md-12 padd0">
+												
+													<div class="form-group col-md-6">
+															<label for="emailaddress"> Date of Sample receipt </label>
+															<input class="form-control" readonly type="date" id="end" [(ngModel)]="model.dateOfReceipt" name="date_of_receipt"
+															#name="ngModel"/>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+															<label for="emailaddress"> Date of test </label>
+															<input class="form-control" type="date" id="end"  [(ngModel)]="model.dateOfTest" name="date_of_test"
+															#name="ngModel"/>
+                                                    </div>
+													
+                                            </div>
+                                        </div>
+                                    </div>
+									<!-- END PANEL HEADLINE -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- PANEL HEADLINE -->
+                                    <div class="panel panel-headline">
+                                        <div class="panel-body">
+												<div class="form-group col-md-4">
+													<label for="emailaddress"> Lab ref no. </label>
+													<input class="form-control"  type="text" [(ngModel)]="model.labRefrenceNumber" name="lab_reference_code"
+													#name="ngModel" readonly/>
+												</div>
+												<div class="form-group col-md-4">
+														<label for="emailaddress"> Crop Name</label>
+														<input class="form-control"  type="text" id=crop [(ngModel)]="model.cropName" name="crop"
+														#name="ngModel" readonly/>
+												</div>
+												<div class="form-group col-md-4">
+														<label for="emailaddress"> Variety </label>
+														<input class="form-control" type="text" id=variety [(ngModel)]="model.variety" name="variety"
+														#name="ngModel" readonly/>
+												</div>
+											
+												
+												<div class="form-group col-md-4">
+													<label for="emailaddress"> Seed class </label>
+													<input class="form-control" type="text" [(ngModel)]="model.seedClass" name="seed_class"
+													#name="ngModel" readonly/>
+												</div>
+												<div class="form-group col-md-6">
+													<label for="emailaddress"> Method </label>
+													<select class='select-option form-control' [(ngModel)]="model.methodId"  (change)='onOptionSelected($event)'  name="season">
+															
+															<option class='option'  [value]="1">Satake Machine Dehulling</option>
+															<option class='option'  [value]="2">Water Soak</option>
+															
+													</select>
+											</div>
+												
+										</div>
+                                    </div>
+                                    <!-- END PANEL HEADLINE -->
+                                </div>
+                            </div>
+							
+							<div class="row">
+									<div class="col-md-12">
+										<!-- PANEL HEADLINE -->
+										<div class="panel panel-headline">
+											<div class="panel-body">
+													<div>Replication 1</div>
+														<div class="form-group col-md-12">
+																<label for="emailaddress"> Weight Of Working Sample(g) </label>
+																<input class="form-control" type="number" step="0.01" [(ngModel)]="model.weightOfWorkingSample" name="weightOfWorkingSample"
+																#weightOfWorkingSample="ngModel" [ngClass]="{ 'is-invalid': f.submitted && weightOfWorkingSample.invalid }" required/>
+																<div *ngIf="f.submitted && weightOfWorkingSample.invalid" class="invalid-feedback valid">
+																	<div *ngIf="weightOfWorkingSample.errors.required">*required</div>
+																</div>
+															</div>
+															<div class="form-group col-md-6">
+																<label for="emailaddress"> Red Rice In Working Sample </label>
+																<input class="form-control" type="number" step="0.01" [(ngModel)]="model.numberRedRiceWorking" name="numberRedRiceWorking"
+																#numberRedRiceWorking="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numberRedRiceWorking.invalid }" required/>
+																<div *ngIf="f.submitted && numberRedRiceWorking.invalid" class="invalid-feedback valid">
+																	<div *ngIf="numberRedRiceWorking.errors.required">*required</div>
+																</div>
+															</div>
+															<div class="form-group col-md-6">
+																	<label for="emailaddress"> RED RICE PER 500 G: </label>
+																	<input class="form-control" readonly type="number" step="0.01" [(ngModel)]="redRicePer500" name="redRicePer500"
+																	#name="ngModel"/>
+																</div>
+															
+															
+								                      	
+											</div>
+										</div>
+										<!-- END PANEL HEADLINE -->
+									</div>
+								</div>
+								<div class="row">
+										<div class="col-md-12">
+											<!-- PANEL HEADLINE -->
+											<div class="panel panel-headline">
+												<div class="panel-body">
+															<div>Replication 2 :</div>
+														<div class="form-group col-md-12">
+																<label for="emailaddress"> Weight Of Working Sample(g) </label>
+																<input class="form-control" type="number" step="0.01" [(ngModel)]="model.weightOfWorkingSampleR" name="weightOfWorkingSampleR"
+																#weightOfWorkingSampleR="ngModel" [ngClass]="{ 'is-invalid': f.submitted && weightOfWorkingSampleR.invalid }" required/>
+																<div *ngIf="f.submitted && weightOfWorkingSampleR.invalid" class="invalid-feedback valid">
+																	<div *ngIf="weightOfWorkingSampleR.errors.required">*required</div>
+																</div>
+															</div>
+															<div class="form-group col-md-4">
+																<label for="emailaddress"> Red Rice In Working Sample </label>
+																<input class="form-control" type="number" step="0.01" [(ngModel)]="model.numberRedRiceWorkingR" name="numberRedRiceWorkingR"
+																#numberRedRiceWorkingR="ngModel" [ngClass]="{ 'is-invalid': f.submitted && numberRedRiceWorkingR.invalid }" required/>
+																<div *ngIf="f.submitted && numberRedRiceWorkingR.invalid" class="invalid-feedback valid">
+																	<div *ngIf="numberRedRiceWorkingR.errors.required">*required</div>
+																</div>
+															</div>
+															<div class="form-group col-md-4">
+																	<label for="emailaddress"> RED RICE PER 500 G: </label>
+																	<input class="form-control" readonly type="number" step="0.01" [(ngModel)]="redRicePer500Rep" name="redRicePer500Rep"
+																	#name="ngModel"/>
+																</div>
+																<div class="form-group col-md-4">
+																		<label for="emailaddress"> Get Calculated Values:  </label><br/>
+
+																	<button type="button" class="btn btn-success"  (click)="getAllValue()"  >
+																			ANALYS
+																	  </button>
+																</div>
+															
+																
+								                      	
+
+ 
+													
+												</div>
+											</div>
+											<!-- END PANEL HEADLINE -->
+										</div>
+									</div>
+							
+							
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <!-- PANEL HEADLINE -->
+                                    <div class="panel panel-headline">
+                                        <div class="panel-body">
+												<div>Standard</div>
+													
+												
+
+													<div class="form-group col-md-6">
+															<label for="emailaddress"> RED RICE PER 500 G: </label>
+															<input class="form-control" readonly type="number" step="0.01" [(ngModel)]="model.numberRedRicePer500" name="pure_seed"
+															#name="ngModel"/>
+														</div>
+                                            
+                                                <div class="form-group col-md-6">
+													<label for="emailaddress"> Initials of Analyst </label>
+													<input class="form-control" type="text" [(ngModel)]="model.analystSignature" name="inOfAnalyst"
+													#analystSignature="ngModel" [ngClass]="{ 'is-invalid': f.submitted && analystSignature.invalid }" required/>
+																<div *ngIf="f.submitted && analystSignature.invalid" class="invalid-feedback valid">
+																	<div *ngIf="analystSignature.errors.required">*required</div>
+																</div>
+												</div>
+												<div class="form-group col-md-12" >
+														<label class="radio-inline"> <input type="radio"   id="packing"
+														value="Acceptable"	[(ngModel)]="model.acceptable" name="packing"
+														#name="ngModel"/> Acceptable </label>
+														<label class="radio-inline"> <input type="radio"  id="packing" value="Not Acceptable" [(ngModel)]="model.acceptable" name="packing"
+															#name="ngModel"/> Not Acceptable </label>
+															
+													</div>
+												
+												<div class="form-group col-md-12">
+													<button class="btn btn-success" type="submit"  value="Register"> SUBMIT </button>
+												</div>
+										
+										</div>
+                                    </div>
+                                    <!-- END PANEL HEADLINE -->
+                                </div>
+                            </div>
+						</div>
+					</div>
+					<!-- END OVERVIEW -->
+				</div>
+			</form>
+				
+			</div>
+
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+		<footer>
+            <div class="container-fluid">
+            </div>
+        </footer>
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
+	<script src="assets/scripts/klorofil-common.js"></script>
+	<script>
+	$(function() {
+		var data, options;
+
+		// headline charts
+		data = {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+			series: [
+				[23, 29, 24, 40, 25, 24, 35],
+				[14, 25, 18, 34, 29, 38, 44],
+			]
+		};
+
+		options = {
+			height: 300,
+			showArea: true,
+			showLine: false,
+			showPoint: false,
+			fullWidth: true,
+			axisX: {
+				showGrid: false
+			},
+			lineSmooth: false,
+		};
+
+		new Chartist.Line('#headline-chart', data, options);
+
+
+		// visits trend charts
+		data = {
+			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+			series: [{
+				name: 'series-real',
+				data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
+			}, {
+				name: 'series-projection',
+				data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
+			}]
+		};
+
+		options = {
+			fullWidth: true,
+			lineSmooth: false,
+			height: "270px",
+			low: 0,
+			high: 'auto',
+			series: {
+				'series-projection': {
+					showArea: true,
+					showPoint: false,
+					showLine: false
+				},
+			},
+			axisX: {
+				showGrid: false,
+
+			},
+			axisY: {
+				showGrid: false,
+				onlyInteger: true,
+				offset: 0,
+			},
+			chartPadding: {
+				left: 20,
+				right: 20
+			}
+		};
+
+		new Chartist.Line('#visits-trends-chart', data, options);
+
+
+		// visits chart
+		data = {
+			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+			series: [
+				[6384, 6342, 5437, 2764, 3958, 5068, 7654]
+			]
+		};
+
+		options = {
+			height: 300,
+			axisX: {
+				showGrid: false
+			},
+		};
+
+		new Chartist.Bar('#visits-chart', data, options);
+
+
+		// real-time pie chart
+		var sysLoad = $('#system-load').easyPieChart({
+			size: 130,
+			barColor: function(percent) {
+				return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
+			},
+			trackColor: 'rgba(245, 245, 245, 0.8)',
+			scaleColor: false,
+			lineWidth: 5,
+			lineCap: "square",
+			animate: 800
+		});
+
+		var updateInterval = 3000; // in milliseconds
+
+		setInterval(function() {
+			var randomVal;
+			randomVal = getRandomInt(0, 100);
+
+			sysLoad.data('easyPieChart').update(randomVal);
+			sysLoad.find('.percent').text(randomVal);
+		}, updateInterval);
+
+		function getRandomInt(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+	});
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css"> -->
+</head>
+<body class="my">
+
+            <div class="row">
+						<label for="emailaddress" > <button class="buttonG2" (click)="getPdf()" type="button">Download</button> </label>
+						
+					
+							<label for="emailaddress" >  <button class="buttonG" (click)="getGenerateReport()" type="button">Back</button> </label>
+					
+				</div>	
+
+
+				
+	<div class="page_sec" >
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12" id="contentToConvert">
+					<div class="sec_info">
+						<div class="header_llogo">
+							<img src="assets/img/logo1.png">
+						</div>
+						<div class="header_text">
+							<h3>Pathein Seed Testing Laboratory
+							<p>Ministry of Agriculture, Livestock and Irrigation<br> Department of Agriculture <br>Seed Division</p>
+							<span>Certificate of Seed Testing(FORM07)</span></h3>
+						</div>
+						<div class="header_rlogo">
+							<img src="assets/img/logo2.png">
+						</div>
+
+						<div class="form_box">
+							<div class="name_text">Name of Organization/Applicant:
+								<span>{{senderCatagory}}</span>
+							</div>
+							<div class="name_text">Region:
+								<span>{{region}}</span>
+							</div>
+							<div class="name_text">Township:
+								<span>{{township}}</span>
+							</div>
+							<div class="name_text">Village Track:
+									<span>{{villageTrack}}</span>
+								</div>
+								<div class="name_text">Village:
+										<span>{{village}}</span>
+									</div>
+							<div class="name_text">Seed Grower’s Name-
+								<span>{{senderName1}}</span>
+							</div>
+							<div class="col-sm-4 p0 form_group">
+								<div class="name_text">Crop:
+									<span>{{crop1}}</span>
+								</div>
+								<div class="name_text">Variery:
+									<span>{{variety1}}</span>
+								</div>
+								<div class="name_text">Lot No:
+									<span>{{lotNo1}}</span>
+								</div>
+							</div>
+							<div class="col-sm-4 p0 form_group">
+								<div class="name_text">Production Year:
+									<span>{{year}}</span>
+								</div>
+								<div class="name_text">Seed Class:
+									<span>{{seedClass1}}</span>
+								</div>
+								<div class="name_text">Lot Size:
+									<span>{{lot_size}}</span>
+								</div>
+							</div>
+							<div class="col-sm-4 p0 form_group">
+								<div class="name_text">Season:
+									<span>{{season}}</span>
+								</div>
+								<div class="name_text">Seed Source :
+									<span>{{seedSource}}</span>
+								</div>
+								<div class="name_text">LAB ref no:
+									<span>{{labReferenceNo}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="table_box">
+							<table class="table table-bordered">
+							    <thead>
+							      <tr>
+							        <th>Sr.No</th>
+							        <th>Factor</th>
+							        <th>Occurrence</th>
+							        <th>Specified Seed Standard</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr>
+							        <td>1</td>
+							        <td>Physical Purity %</td>
+							        <td>{{physicalPurity}}</td>
+							        <td>{{pureSeed}}</td>
+							      </tr>
+							      <tr >
+							        <td>2</td>
+							        <td>Germination %</td>
+							        <td>{{germination}}</td>
+							        <td>{{germinationStand}}</td>
+							      </tr>
+							      <tr>
+							        <td>3</td>
+							        <td>Seed Moisture Content%</td>
+							        <td>{{seedMoistureContent}}</td>
+							        <td>{{moistureContent}}</td>
+							      </tr>
+							      <tr>
+							        <td>4</td>
+							        <td>Inert Matter %</td>
+							        <td>{{inertMatter}}</td>
+							        <td>{{inertMatterStand}}</td>
+							      </tr>
+							      <tr>
+							        <td>5</td>
+							        <td>Other Crop Seeds%</td>
+							        <td>{{otherCropSeed}}</td>
+							        <td>{{otherSeed}}</td>
+							      </tr>
+							      <tr>
+							        <td>6</td>
+							        <td>Weed Seeds Content (500grams)</td>
+							        <td class="none_text">{{weedSeedContent}}</td>
+							        <td>{{totalWeedSeed}}</td>
+							      </tr>
+							      <tr>
+							        <td>7</td>
+							        <td>Red Rice Seed Content (500grams)</td>
+							        <td>{{redRiceContent}}</td>
+							        <td>{{redRiceGains}}</td>
+							      </tr>
+							      
+							    
+							    </tbody>
+							  </table>
+						</div>
+						<div class="remark_text">
+							<h5>Remarks: It is suitable to use as {{seedClass1}}</h5>
+							<div class="name_text">Date
+								<span>{{seedDate}}</span>
+							</div>
+						</div>
+						<div class="stamp_box">
+							<div class="left_stamp">
+								<img src="assets/img/stamp.png">
+							</div>
+							<div class="right_stamptext">{{name}}
+								<span>Seed Lab In-charge <br>Seed Testing Laboratory <br>Seed Division</span>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+						<div class="footer_box">
+							<div class="fleft_text">
+								Pathein Seed Testing Laboratory, Myat Toe Ward, Pathein City<br>Pathein, Ayeyarwady Delta 1101
+
+							</div>
+							<div class="fright_logo">
+								<ul>
+									<li>
+										<img src="assets/img/flogo1.png">
+									</li>
+									<li>
+										<img src="assets/img/flogo2.png">
+									</li>
+									<li>
+										<img src="assets/img/flogo3.png">
+									</li>
+									<li>
+										<img src="assets/img/flogo4.png">
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	
+</body>
+</html>

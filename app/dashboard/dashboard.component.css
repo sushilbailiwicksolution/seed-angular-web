@@ -1,0 +1,26 @@
+
+
+  @import url("../../assets/vendor/bootstrap/css/bootstrap.min.css");
+  @import url("../../assets/vendor/font-awesome/css/font-awesome.min.css");
+  @import url("../../assets/vendor/linearicons/style.css");
+  @import url("../../assets/vendor/chartist/css/chartist-custom.css");
+  @import url("../../assets/css/main.css");
+  @import url("../../assets/css/styleReport.css"); 
+
+  .my{
+    color:black
+  }
+
+  .pointer {
+    cursor: pointer;
+}
+/* 
+ VENDOR CSS 
+	 <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	 <link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css">
+	 <link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	 <link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
+	 <!-- MAIN CSS -->
+	 <link rel="stylesheet" href="assets/css/main.css">
+	 <!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
+	 <link rel="stylesheet" href="assets/css/demo.css"> */

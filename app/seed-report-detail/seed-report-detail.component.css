@@ -1,0 +1,35 @@
+
+.main-row-d{
+    display: initial;
+}
+
+.buttonG {
+    background-color: #008CBA; /* blue */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+  .buttonG2 {
+    background-color: #008CBA; /* blue */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  .my{
+    color:black
+  }
